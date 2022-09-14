@@ -1,0 +1,81 @@
+@use "variables" as vars;
+@import "typography";
+
+.portfolioSegment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 2.5rem;
+  margin: 1rem;
+  overflow-y: hidden;
+  transition: height .3s ease-in-out;
+
+  animation-name: slideUp;
+  animation-duration: .3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+
+  &.active {
+    animation-name: slideDown;
+    animation-duration: .3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+  }
+
+  &:hover {
+    height: 10rem;
+
+    h6 {
+      color: vars.$color-text;
+      font-size: 2.5rem;
+
+      &:before {
+        width: 100%;
+      }
+    }
+  }
+
+  h6 {
+    @include Large;
+    color: vars.$color-gray;
+    width: fit-content;
+    position: relative;
+    transition-property: color, font-size;
+    transition-timing-function: ease-in-out;
+    transition-duration: .3s;
+
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      width: 0;
+      background-color: vars.$color-text;
+      height: .1rem;
+      border-radius: .1rem;
+      transition-property: width;
+      transition-timing-function: ease-in-out;
+      transition-duration: .3s;
+    }
+  }
+
+  p {
+    @include Regular;
+    color: vars.$color-text;
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    img {
+      height: 3rem;
+      margin: 1rem;
+    }
+  }
+}

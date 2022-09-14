@@ -1,0 +1,34 @@
+@use "variables" as vars;
+@import "typography";
+@import "animations";
+
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+
+  h2 {
+    @include XL;
+    color: vars.$color-gray;
+    margin-bottom: 3rem;
+  }
+
+  & > div {
+    animation-name: slideDown;
+    animation-duration: .3s;
+    animation-timing-function: ease-in-out;
+    animation-direction: reverse;
+    animation-fill-mode: forwards;
+
+    &.active {
+      animation-name: slideDown;
+      animation-duration: .3s;
+      animation-timing-function: ease-in-out;
+      animation-direction: normal;
+      animation-fill-mode: forwards;
+    }
+  }
+}

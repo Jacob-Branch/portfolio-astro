@@ -1,0 +1,26 @@
+@import "Cursor";
+@import "Hero";
+@import "Portfolio";
+@import "PortfolioSegment";
+
+@import "typography";
+@import "variables";
+@import "animations";
+
+:root {
+  font-size: 12px;
+}
+
+* {
+  margin: 0;
+}
+
+body, main {
+  cursor: url('/cursor/reg.svg'), auto;
+  background: #242424;
+  min-height: 100vh;
+}
+
+a {
+  cursor: url('/cursor/hover.svg'), auto;
+}

@@ -1,0 +1,23 @@
+---
+import PortfolioSegment from "./PortfolioSegment.astro";
+
+const testProject = [
+  {
+    title: "ezRoute",
+    desc: "Company car tracking and accounting made easy",
+    tech: ["hugo"],
+    url: "https://ezroute.dev",
+  },
+  {
+    title: "digiBlink",
+    desc: "A web agency that covers all your bases",
+    tech: ["hugo", "sass"],
+    url: "https://digiblink.vercel.app",
+  },
+];
+---
+
+<section id={"portfolio"} class={"portfolio"}>
+  <h2>Works</h2>
+  {testProject.map((v, i) => <PortfolioSegment {...v} animDelay={i} />)}
+</section>

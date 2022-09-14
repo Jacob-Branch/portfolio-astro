@@ -1,0 +1,14 @@
+---
+const { url, title, animDelay, desc, tech } = Astro.props;
+---
+
+<div
+  class={"portfolioSegment"}
+  style={{ animationDelay: `${(animDelay + 1) / 3}s` }}
+>
+  <h6 onclick={'() => window.open(url, "_blank")'}>{title}</h6>
+  <p>{desc}</p>
+  <div>
+    {tech.map((v, i) => <img src={`tech-icons/${v}.svg`} alt={v} />)}
+  </div>
+</div>

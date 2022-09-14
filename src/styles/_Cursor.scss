@@ -1,0 +1,11 @@
+.cursor {
+  background-image: url("/cursor/circle.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 3rem;
+  width: 3rem;
+  position: fixed;
+  transform: translate(-40%, -50%);
+  pointer-events: none;
+}

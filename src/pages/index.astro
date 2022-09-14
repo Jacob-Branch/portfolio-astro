@@ -1,96 +1,74 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Portfolio from "../components/portfolio.jsx";
+import Cursor from "../components/cursor.astro";
+import Home from "../components/hero.astro";
+import "../styles/main.scss";
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			Check out the <code>src/pages</code> directory to get started.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Chat"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
+  <main>
+    <Cursor />
+    <Home />
+    <Portfolio />
+  </main>
 </Layout>
 
-<style>
-	:root {
-		--astro-gradient: linear-gradient(0deg, #4f39fa, #da62c4);
-	}
+<script>
+  const cursorElem = document.querySelectorAll(".cursor")[0] as HTMLDivElement;
+  const portfolio = document.getElementById("portfolio");
 
-	h1 {
-		margin: 2rem 0;
-	}
+  const portfolioProjects = document.querySelectorAll(
+    ".portfolioSegment"
+  ) as NodeListOf<HTMLDivElement>;
 
-	main {
-		margin: auto;
-		padding: 1em;
-		max-width: 60ch;
-	}
+  cursorElem.style.display =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      window.navigator.userAgent
+    )
+      ? "none"
+      : "block";
 
-	.text-gradient {
-		font-weight: 900;
-		background-image: var(--astro-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 100% 200%;
-		background-position-y: 100%;
-		border-radius: 0.4rem;
-		animation: pulse 4s ease-in-out infinite;
-	}
+  const isInViewportOver = (element: any) => {
+    if (element === null) return false;
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top <=
+        (window.innerHeight || document.documentElement.clientHeight) / 3 &&
+      rect.left >= 0 &&
+      rect.bottom >=
+        (window.innerHeight || document.documentElement.clientHeight) / 3 &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  };
 
-	@keyframes pulse {
-		0%,
-		100% {
-			background-position-y: 0%;
-		}
-		50% {
-			background-position-y: 80%;
-		}
-	}
+  const cursorPosition = (event: any): number[] => {
+    const x = event.clientX;
+    const y = event.clientY;
 
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		background: #4f39fa;
-		padding: 1rem;
-		border-radius: 0.4rem;
-		color: var(--color-bg);
-	}
+    return [x, y];
+  };
 
-	.instructions code {
-		font-size: 0.875em;
-		border: 0.1em solid var(--color-border);
-		border-radius: 4px;
-		padding: 0.15em 0.25em;
-	}
-
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-</style>
+  const mouseMoves = (event: any) => {
+    console.log("moves");
+    let position = cursorPosition(event);
+    cursorElem.style.top = `${position[1]}px`;
+    cursorElem.style.left = `${position[0]}px`;
+  };
+  window.addEventListener("mousemove", mouseMoves);
+  window.addEventListener("scroll", () => {
+    if (isInViewportOver(portfolio)) {
+      for (const elem of portfolioProjects) {
+        elem.classList.remove("closed");
+        void elem.offsetHeight;
+        elem.classList.add("active");
+      }
+    } else {
+      for (const elem of portfolioProjects) {
+        elem.classList.remove("active");
+        void elem.offsetHeight;
+        elem.classList.add("closed");
+      }
+    }
+  });
+</script>
