@@ -10,21 +10,35 @@
   margin: 1rem;
   overflow-y: hidden;
   transition: height .3s ease-in-out;
+  opacity: 0;
 
-  animation-name: slideUp;
-  animation-duration: .3s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
+
+  &.closed {
+    opacity: 1;
+    animation-name: slideUp;
+    animation-duration: .3s;
+    animation-timing-function: ease-in-out;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+
+    &:hover {
+      height: 2.5rem;
+    }
+    
+  }
+    
 
   &.active {
+    opacity: 0;
     animation-name: slideDown;
     animation-duration: .3s;
     animation-timing-function: ease-in-out;
+    animation-direction: normal;
     animation-fill-mode: forwards;
   }
 
   &:hover {
-    height: 10rem;
+    height: 100px;
 
     h6 {
       color: vars.$color-text;
@@ -34,6 +48,16 @@
         width: 100%;
       }
     }
+    // &::before {
+    //   content: "";
+    //   position: fixed;
+    //   top: 0;
+    //   left: 0;
+    //   width: 100vw;
+    //   height: 100vh;
+    //   background-color: vars.$color-background;
+    //   opacity: .2;
+    // }
   }
 
   h6 {
@@ -44,6 +68,11 @@
     transition-property: color, font-size;
     transition-timing-function: ease-in-out;
     transition-duration: .3s;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     &:before {
       content: "";
@@ -64,18 +93,25 @@
   p {
     @include Regular;
     color: vars.$color-text;
+    max-width: 300px;
+    text-align: center;
   }
 
   div {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 
     img {
       height: 3rem;
       margin: 1rem;
+      filter: grayscale(1);
+      transition: filter .3s ease-in-out;
+
+      &:hover {
+          filter: grayscale(0);
+      }
     }
   }
 }

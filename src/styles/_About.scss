@@ -1,0 +1,67 @@
+@use "./variables" as vars;
+@import "./typography";
+
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: fit-content;
+    margin: auto;
+    max-width: 80rem;
+
+    & > * {
+        transform: translateY(5rem);
+        opacity: 0;
+        transition: all .3s ease-in-out;
+        
+        &.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    header h2 {
+        @include XL;
+        margin-bottom: 1rem;
+        text-align: justify;
+    }
+
+    h4 {
+        @include XL;
+        color: vars.$color-gray;
+        margin-top: 3rem
+    }
+
+    img {
+        width: 15rem;
+        border-radius: 20rem;
+        float: left;
+        filter: grayscale(1);
+        transition: filter .3s ease-in-out;
+
+        &:hover {
+            filter: grayscale(0);
+        }
+    }
+
+    p {
+        @include Regular;
+        margin: 1rem 0;
+        text-align: center;
+    }
+
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        max-width: 50rem;
+
+        p {
+            text-align: left;
+            margin: 3rem;
+        }
+    }
+}

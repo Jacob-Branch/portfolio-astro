@@ -1,0 +1,28 @@
+stages:
+  - astro-build
+  - docker-build
+
+astro:
+  stage: astro-build
+  image: node:14
+  cache:
+    paths:
+      - node_modules/
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - public
+
+docker-build:
+  stage: docker-build
+  image: docker:latest
+  services:
+    - name: docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build -t "$CI_REGISTRY_IMAGE:latest" .
+    - docker push "$CI_REGISTRY_IMAGE:latest"

@@ -3,21 +3,51 @@ import PortfolioSegment from "./PortfolioSegment.astro";
 
 const testProject = [
   {
+    title: "digiBlink",
+    desc: "A web agency that covers all your bases",
+    tech: ["hugo", "sass"],
+    url: "https://digiblink.eu",
+  },
+  {
+    title: "19 Points",
+    desc: "The landing page of 19 Points, a culmination of companies and projects all working in the tech",
+    tech: ["hugo", "sass", "spline"],
+    url: "https://19points.vercel.app",
+  },
+  {
+    title: "Automatus",
+    desc: "An IoT project, built for your company from the ground up",
+    tech: ["hugo", "sass"],
+    url: "https://automatus-one.vercel.app",
+  },
+  {
+    title: "Tosteris",
+    desc: "Web hosting, VPS, and Domain e-commerce store",
+    tech: ["react", "sass", "typescript"],
+    url: "https://digiblink.vercel.app",
+  },
+  {
+    title: "Napsis",
+    desc: "Control panel for built for landlords.",
+    tech: ["hugo", "sass", "bootstrap"],
+    url: "https://webdev.napsis.lv",
+  },
+  {
     title: "ezRoute",
     desc: "Company car tracking and accounting made easy",
     tech: ["hugo"],
     url: "https://ezroute.dev",
   },
   {
-    title: "digiBlink",
-    desc: "A web agency that covers all your bases",
-    tech: ["hugo", "sass"],
-    url: "https://digiblink.vercel.app",
+    title: "Netero",
+    desc: "Landing page of the Netero web architecture consulting agency.",
+    tech: ["hugo"],
+    url: "https://netero.dev",
   },
 ];
 ---
 
 <section id={"portfolio"} class={"portfolio"}>
   <h2>Works</h2>
-  {testProject.map((v, i) => <PortfolioSegment {...v} animDelay={i} />)}
+  {testProject.map((v, i) => <PortfolioSegment {...v} animDelay={i / 100 * 15} />)}
 </section>

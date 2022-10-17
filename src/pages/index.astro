@@ -1,9 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Portfolio from "../components/portfolio.jsx";
+import Portfolio from "../components/portfolio.astro";
 import Cursor from "../components/cursor.astro";
 import Home from "../components/hero.astro";
 import "../styles/main.scss";
+import Socials from "../components/socials.astro";
+import About from "../components/about.astro";
+import Footer from "../components/footer.astro";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -11,15 +14,22 @@ import "../styles/main.scss";
     <Cursor />
     <Home />
     <Portfolio />
+    <About />
+    <Socials />
+    <Footer />
   </main>
 </Layout>
 
 <script>
   const cursorElem = document.querySelectorAll(".cursor")[0] as HTMLDivElement;
   const portfolio = document.getElementById("portfolio");
+  const about = document.getElementById("about")
 
   const portfolioProjects = document.querySelectorAll(
     ".portfolioSegment"
+  ) as NodeListOf<HTMLDivElement>;
+  const aboutP = document.querySelectorAll(
+    "#about > *"
   ) as NodeListOf<HTMLDivElement>;
 
   cursorElem.style.display =
@@ -49,6 +59,35 @@ import "../styles/main.scss";
     return [x, y];
   };
 
+  const scrollHandler = () => {
+    if (isInViewportOver(portfolio)) {
+      for (const elem of portfolioProjects) {
+        elem.classList.remove("closed");
+        void elem.offsetWidth;
+        elem.classList.add("active");
+      }
+    } else {
+      for (const elem of portfolioProjects) {
+        elem.classList.remove("active");
+        void elem.offsetWidth;
+        elem.classList.add("closed");
+      }
+    }
+    if (isInViewportOver(about)) {
+      for (const elem of aboutP) {
+        elem.classList.remove("closed");
+        void elem.offsetWidth;
+        elem.classList.add("active");
+      }
+    } else {
+      for (const elem of aboutP) {
+        elem.classList.remove("active");
+        void elem.offsetWidth;
+        elem.classList.add("closed");
+      }
+    }
+  }
+
   const mouseMoves = (event: any) => {
     console.log("moves");
     let position = cursorPosition(event);
@@ -56,19 +95,7 @@ import "../styles/main.scss";
     cursorElem.style.left = `${position[0]}px`;
   };
   window.addEventListener("mousemove", mouseMoves);
-  window.addEventListener("scroll", () => {
-    if (isInViewportOver(portfolio)) {
-      for (const elem of portfolioProjects) {
-        elem.classList.remove("closed");
-        void elem.offsetHeight;
-        elem.classList.add("active");
-      }
-    } else {
-      for (const elem of portfolioProjects) {
-        elem.classList.remove("active");
-        void elem.offsetHeight;
-        elem.classList.add("closed");
-      }
-    }
-  });
+
+  window.addEventListener("scroll", () => scrollHandler());
+  window.addEventListener("load", () => scrollHandler())
 </script>
