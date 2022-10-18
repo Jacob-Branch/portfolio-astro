@@ -15,6 +15,7 @@ astro:
     expire_in: 1 week
     paths:
       - dist
+      - public
 
 docker-build:
   stage: docker-build
