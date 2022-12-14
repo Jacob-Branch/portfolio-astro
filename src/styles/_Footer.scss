@@ -11,6 +11,7 @@ footer {
     p {
         color: vars.$color-gray;
         @include Regular;
+        text-align: center;
     }
 
     a {
