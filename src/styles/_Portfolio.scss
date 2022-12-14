@@ -7,6 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 3rem;
 
   min-height: 100vh;
 
@@ -16,19 +17,56 @@
     margin-bottom: 3rem;
   }
 
-  & > div {
-    animation-name: slideDown;
-    animation-duration: .3s;
-    animation-timing-function: ease-in-out;
-    animation-direction: reverse;
-    animation-fill-mode: forwards;
+  & > p {
+    @include Large;
+
+    
+    a {
+      color: vars.$color-brand;
+    }
+
+    .closed {
+      opacity: 1;
+      animation-name: slideUp;
+      animation-duration: .3s;
+      animation-timing-function: ease-in-out;
+      animation-direction: normal;
+      animation-fill-mode: forwards;
+      animation-delay: .75s;
+    }
 
     &.active {
+      opacity: 0;
       animation-name: slideDown;
       animation-duration: .3s;
       animation-timing-function: ease-in-out;
       animation-direction: normal;
       animation-fill-mode: forwards;
+      animation-delay: .75s;
+    }
+  }
+
+  & > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    & > div {
+      animation-name: slideDown;
+      animation-duration: .3s;
+      animation-timing-function: ease-in-out;
+      animation-direction: reverse;
+      animation-fill-mode: forwards;
+
+      &.active {
+        animation-name: slideDown;
+        animation-duration: .3s;
+        animation-timing-function: ease-in-out;
+        animation-direction: normal;
+        animation-fill-mode: forwards;
+      }
     }
   }
 }

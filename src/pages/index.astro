@@ -9,7 +9,7 @@ import About from "../components/about.astro";
 import Footer from "../components/footer.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout> 
   <main>
     <Cursor />
     <Home />
@@ -23,7 +23,8 @@ import Footer from "../components/footer.astro";
 <script>
   const cursorElem = document.querySelectorAll(".cursor")[0] as HTMLDivElement;
   const portfolio = document.getElementById("portfolio");
-  const about = document.getElementById("about")
+  const about = document.getElementById("about");
+  const portfolioContact = document.getElementById("portfolioContact")
 
   const portfolioProjects = document.querySelectorAll(
     ".portfolioSegment"
@@ -66,12 +67,19 @@ import Footer from "../components/footer.astro";
         void elem.offsetWidth;
         elem.classList.add("active");
       }
+      portfolioContact.classList.remove("closed")
+      void portfolioContact.offsetWidth
+      portfolioContact.classList.add("active")
+
     } else {
       for (const elem of portfolioProjects) {
         elem.classList.remove("active");
         void elem.offsetWidth;
         elem.classList.add("closed");
       }
+      portfolioContact.classList.remove("active")
+      void portfolioContact.offsetWidth
+      portfolioContact.classList.add("closed")
     }
     if (isInViewportOver(about)) {
       for (const elem of aboutP) {
@@ -86,7 +94,7 @@ import Footer from "../components/footer.astro";
         elem.classList.add("closed");
       }
     }
-  }
+  };
 
   const mouseMoves = (event: any) => {
     console.log("moves");
@@ -97,5 +105,5 @@ import Footer from "../components/footer.astro";
   window.addEventListener("mousemove", mouseMoves);
 
   window.addEventListener("scroll", () => scrollHandler());
-  window.addEventListener("load", () => scrollHandler())
+  window.addEventListener("load", () => scrollHandler());
 </script>
