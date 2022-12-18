@@ -9,7 +9,7 @@ import About from "../components/about.astro";
 import Footer from "../components/footer.astro";
 ---
 
-<Layout> 
+<Layout>
   <main>
     <Cursor />
     <Home />
@@ -24,7 +24,7 @@ import Footer from "../components/footer.astro";
   const cursorElem = document.querySelectorAll(".cursor")[0] as HTMLDivElement;
   const portfolio = document.getElementById("portfolio");
   const about = document.getElementById("about");
-  const portfolioContact = document.getElementById("portfolioContact")
+  const portfolioContact = document.getElementById("portfolioContact");
 
   const portfolioProjects = document.querySelectorAll(
     ".portfolioSegment"
@@ -46,10 +46,8 @@ import Footer from "../components/footer.astro";
     return (
       rect.top <=
         (window.innerHeight || document.documentElement.clientHeight) / 3 &&
-      rect.left >= 0 &&
       rect.bottom >=
-        (window.innerHeight || document.documentElement.clientHeight) / 3 &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        (window.innerHeight || document.documentElement.clientHeight) / 3
     );
   };
 
@@ -67,19 +65,18 @@ import Footer from "../components/footer.astro";
         void elem.offsetWidth;
         elem.classList.add("active");
       }
-      portfolioContact.classList.remove("closed")
-      void portfolioContact.offsetWidth
-      portfolioContact.classList.add("active")
-
+      portfolioContact.classList.remove("closed");
+      void portfolioContact.offsetWidth;
+      portfolioContact.classList.add("active");
     } else {
       for (const elem of portfolioProjects) {
         elem.classList.remove("active");
         void elem.offsetWidth;
         elem.classList.add("closed");
       }
-      portfolioContact.classList.remove("active")
-      void portfolioContact.offsetWidth
-      portfolioContact.classList.add("closed")
+      portfolioContact.classList.remove("active");
+      void portfolioContact.offsetWidth;
+      portfolioContact.classList.add("closed");
     }
     if (isInViewportOver(about)) {
       for (const elem of aboutP) {

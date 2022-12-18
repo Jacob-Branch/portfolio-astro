@@ -27,7 +27,7 @@
       color: vars.$color-brand;
     }
 
-    .closed {
+    &.closed {
       opacity: 1;
       animation-name: slideUp;
       animation-duration: .3s;
