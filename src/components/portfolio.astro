@@ -7,7 +7,7 @@ const testProject = [
     desc: "A web agency that covers all your bases",
     tech: ["hugo", "sass"],
     url: "https://digiblink.eu",
-    img: "/images/digiblink.png"
+    img: "/images/digiblink.png",
   },
   {
     title: "19 Points",
@@ -21,50 +21,68 @@ const testProject = [
     desc: "An IoT enterprise device monitoring and management",
     tech: ["hugo", "sass"],
     url: "https://automatus.dev",
-    img: "/images/automatus.png"
+    img: "/images/automatus.png",
   },
   {
     title: "Tosteris",
     desc: "Web hosting, VPS, and Domain e-commerce store",
     tech: ["react", "sass", "typescript"],
     url: "https://digiblink.vercel.app",
-    img: "/portfolio-images/digiblink.jpg"
+    img: "/portfolio-images/digiblink.jpg",
   },
   {
     title: "Napsis",
     desc: "Control panel for built for landlords.",
     tech: ["hugo", "sass", "bootstrap"],
     url: "https://webdev.napsis.lv",
-    img: "/portfolio-images/digiblink.jpg"
+    img: "/portfolio-images/digiblink.jpg",
   },
   {
     title: "ezRoute",
     desc: "Company car tracking and accounting made easy",
     tech: ["hugo"],
     url: "https://ezroute.dev",
-    img: "/portfolio-images/digiblink.jpg"
+    img: "/portfolio-images/digiblink.jpg",
   },
   {
     title: "Netero",
     desc: "Landing page of the Netero web architecture consulting agency.",
     tech: ["hugo"],
     url: "https://netero.dev",
-    img: "/portfolio-images/digiblink.jpg"
+    img: "/portfolio-images/digiblink.jpg",
   },
   {
     title: "Media elo",
     desc: "A personal project that ranks pieces of media by elo",
     tech: ["next", "typescript", "sass"],
     url: "https://media-elo.vercel.app/",
-    img: "/images/media-elo.png"
-  }
+    img: "/images/media-elo.png",
+  },
+  {
+    title: "Scholastix",
+    desc: "A web app that helps students find the best school for them, built for the 2023 HackCodeX hackathon",
+    tech: ["react", "typescript", "sass"],
+    url: "https://skolu.nav.lv:1280/",
+    img: "/images/scholastix.png",
+  },
 ];
 ---
 
 <section id={"portfolio"} class={"portfolio"}>
   <h2>Works</h2>
   <div>
-    {testProject.map((v, i) => (["digiBlink", "Automatus", "Media elo"].includes(v.title)) && <PortfolioSegment {...v} animDelay={i / 100 * 15} />)}
+    {
+      testProject.map(
+        (v, i) =>
+          ["digiBlink", "Automatus", "Media elo", "Scholastix"].includes(
+            v.title
+          ) && <PortfolioSegment {...v} animDelay={(i / 100) * 15} />
+      )
+    }
   </div>
-  <p id="portfolioContact">Would like to hear more about my work? Get in contact through <a href="https://www.linkedin.com/in/jekabs-zarins-139a48226/">Linkedin</a> or <a href="mailto: zarins.jekabs@gmail.com">E-mail</a>!</p>
+  <p id="portfolioContact">
+    Would like to hear more about my work? Get in contact through <a
+      href="https://www.linkedin.com/in/jekabs-zarins-139a48226/">Linkedin</a
+    > or <a href="mailto: zarins.jekabs@gmail.com">E-mail</a>!
+  </p>
 </section>
