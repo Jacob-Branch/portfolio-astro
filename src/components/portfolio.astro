@@ -3,6 +3,20 @@ import PortfolioSegment from "./PortfolioSegment.astro";
 
 const testProject = [
   {
+    title: "Sony Center",
+    desc: "Landing page built for the Latvian and Estonian branches of Sony Center",
+    tech: ["django", "sass", "postgres"],
+    url: "https://sonycenter.lv",
+    img: "/images/sonycenter.png",
+  },
+  {
+    title: "Scholastix",
+    desc: "A web app for students trying to find the best school for them, built for the 2023 HackCodeX hackathon",
+    tech: ["react", "typescript", "sass"],
+    url: "https://skolu.nav.lv:1280/",
+    img: "/images/scholastix.png",
+  },
+  {
     title: "digiBlink",
     desc: "A web agency that covers all your bases",
     tech: ["hugo", "sass"],
@@ -20,7 +34,7 @@ const testProject = [
     title: "Automatus",
     desc: "An IoT enterprise device monitoring and management",
     tech: ["hugo", "sass"],
-    url: "https://automatus.dev",
+    url: "https://automatus.io",
     img: "/images/automatus.png",
   },
   {
@@ -58,13 +72,6 @@ const testProject = [
     url: "https://media-elo.vercel.app/",
     img: "/images/media-elo.png",
   },
-  {
-    title: "Scholastix",
-    desc: "A web app that helps students find the best school for them, built for the 2023 HackCodeX hackathon",
-    tech: ["react", "typescript", "sass"],
-    url: "https://skolu.nav.lv:1280/",
-    img: "/images/scholastix.png",
-  },
 ];
 ---
 
@@ -74,9 +81,15 @@ const testProject = [
     {
       testProject.map(
         (v, i) =>
-          ["digiBlink", "Automatus", "Media elo", "Scholastix"].includes(
-            v.title
-          ) && <PortfolioSegment {...v} animDelay={(i / 100) * 15} />
+          [
+            "Sony Center",
+            "digiBlink",
+            "Automatus",
+            "Media elo",
+            "Scholastix",
+          ].includes(v.title) && (
+            <PortfolioSegment {...v} animDelay={(i / 100) * 15} />
+          )
       )
     }
   </div>
