@@ -3,6 +3,13 @@ import PortfolioSegment from "./PortfolioSegment.astro";
 
 const testProject = [
   {
+    title: "Mental Chess",
+    desc: "A version of chess made to raise awarness about mental illnesses",
+    tech: ["react", "typescript", "sass"],
+    url: "http://nav.lv:5173/",
+    img: "/images/mental-chess.jpg",
+  },
+  {
     title: "Sony Center",
     desc: "Landing page built for the Latvian and Estonian branches of Sony Center",
     tech: ["django", "sass", "postgres"],
@@ -13,7 +20,7 @@ const testProject = [
     title: "Scholastix",
     desc: "A web app for students trying to find the best school for them, built for the 2023 HackCodeX hackathon",
     tech: ["react", "typescript", "sass"],
-    url: "https://skolu.nav.lv:1280/",
+    url: "https://github.com/ScholastiX/front-end",
     img: "/images/scholastix.png",
   },
   {
@@ -86,7 +93,7 @@ const testProject = [
             "digiBlink",
             "Automatus",
             "Media elo",
-            "Scholastix",
+            "Mental Chess",
           ].includes(v.title) && (
             <PortfolioSegment {...v} animDelay={(i / 100) * 15} />
           )

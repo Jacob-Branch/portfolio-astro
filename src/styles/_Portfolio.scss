@@ -54,6 +54,7 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    max-width: 120rem;
 
     & > div {
       animation-name: slideDown;
